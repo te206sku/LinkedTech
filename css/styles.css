@@ -59,6 +59,44 @@ body {
     position: relative; /* Для позиционирования псевдоэлементов */
     text-transform: uppercase;  /* Все буквы заглавные */
     color: #030d15;
+
+    &:hover {
+        color: #008bf0;
+    }
+
+    &:active {
+        color: #c72535;
+    }
+
+    &:focus {
+        color: #c72535;
+    }
+}
+
+.navbar__item {
+    position: relative;
+}
+
+.navbar__item::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    /* margin-top: 50px; */
+    background: #008bf0;
+}
+
+/* Анимация слева */
+.navbar__item::after {
+    width: 0;
+    transition: 0.3s;
+}
+
+.navbar__item:hover:after {
+    width: 100%;
 }
 
 /* Стрелка в пунктах меню */
@@ -82,10 +120,30 @@ body {
 
 .header__search {
     margin-right: 28.45px;
+
+    &:hover {
+        outline: 0.5px solid #000;
+        outline-offset: 5px;
+        border-radius: 50%;
+    }
 }
 
 .header__cart {
     margin-right: 25px;
+
+    &:hover {
+        outline: 0.5px solid #000;
+        outline-offset: 5px;
+        border-radius: 50%;
+    }
+}
+
+.header__profile {
+    &:hover {
+        outline: 0.5px solid #000;
+        outline-offset: 2px;
+        border-radius: 50%;
+    }
 }
 
 .main {
@@ -166,6 +224,15 @@ body {
     background-color: #247cc0;
     padding: 16px 38px; /* Внутренние отступы */
     color: #fff;
+
+    &:hover {
+        background-color: rgb(51, 158, 235);
+    }
+
+    &:focus {
+        background-color: rgb(38, 112, 165);
+
+    }
 }
 
 .face__price {
@@ -228,6 +295,14 @@ body {
     border: #f3f3f3;
     border-radius: 90%;  /* Круглая форма */
     background-color: #f3f3f3;
+
+    &:hover {
+        background-color: #939393;
+    }
+
+    &:focus {
+        background-color: #fc5454;
+    }
 }
 
 .product__cart>img {
@@ -313,6 +388,14 @@ body {
 .advertising__btn {
     line-height: 27px;
     text-transform: uppercase;
+
+    &:hover {
+        color: #15151d;
+    }
+
+    &:focus {
+        color: #3b3b91;
+    }
 }
 
 .text__img {
@@ -426,7 +509,7 @@ body {
     opacity: 60%;
 
     &:hover {
-        color: #c72535;
+        color: #6625c7;
         opacity: 100%;
     }
 
@@ -497,6 +580,10 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     background-color: #fff;
+
+    &:hover {
+        color: #c72535;
+    }
 }
 
 .catalog__btn-arrow {
@@ -707,6 +794,10 @@ body {
     line-height: 21px;
     background-color: #fff;
     color: rgb(3, 13, 21, 0.4);
+
+    &:focus {
+        box-shadow: 0px 2px 10px rgba(75, 121, 0, 0.67);
+    }
 }
 
 .contact__btn {
@@ -714,6 +805,14 @@ body {
     font-weight: 600;
     background-color: #247cc0;
     color: #fff;
+
+    &:hover {
+        background-color: #4a708deb;
+    }
+
+    &:focus {
+        background-color: #264d6beb;
+    }
 }
 
 /* Подвал сайта */
@@ -734,6 +833,7 @@ body {
 
 .footer__description {
     line-height: 23px;
+    margin-top: 22px;
 }
 
 .footer__container {
@@ -793,6 +893,14 @@ body {
     opacity: 60%;
 }
 
+.footer__contact>a:hover {
+    box-shadow: 0px 4px 10px #2992e2;
+}
+
+.footer__contact>a:focus {
+    box-shadow: 0px 4px 10px #ef552a;
+}
+
 .language {
     display: flex;
     gap: 9px;
@@ -819,15 +927,15 @@ body {
 
 @media (max-width: 1200px) {
     .container {
-        max-width: 960px;
-    }
-
-    .header__navbar {
-        display: none;
+        padding: 0 20px;
     }
 
     .header__user {
         margin-left: auto;
+    }
+
+    .advertising__img, .advertising2__img {
+        opacity: 30%;
     }
 
     .face__backg {
@@ -839,7 +947,7 @@ body {
 
 @media (max-width: 992px) {
     .container {
-        max-width: 720px;
+        padding: 0 20px;
     }
 
     .face {
@@ -878,11 +986,25 @@ body {
 
 @media (max-width: 768px) {
     .container {
-        max-width: 540px;
+        padding: 0 20px;
+    }
+
+    .header__container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .header__user {
+        margin: 0;
     }
 
     .face {
         margin-top: 80px;
+    }
+
+    .face__backg {
+        opacity: 50%;
     }
 
     .face__title {
@@ -927,14 +1049,51 @@ body {
         margin-top: 40px;
         margin-bottom: 60px;
     }
+
+    .footer__container {
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+    }
 }
 
 @media (max-width: 576px) {
     .container {
-        max-width: 100%;
-        padding: 0 var(--container-padding);
+        padding: 0 20px;
     }
 
+    .navbar__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        width: 100%;
+        /* justify-content: space-between; */
+        gap: 10px;
+    }
+
+    .navbar__arrow {
+        display: none;
+    }
+
+    .face-title-background {
+        display: none;
+    }
+
+    .face__backg {
+        display: none;
+    }
+
+
+    .advertising__item {
+        justify-content: center;
+    }
+
+    .catalog__cart-top {
+        text-align: center;
+    }
+    .catalog__card-content {
+        text-align: center;
+    }
     .header {
         margin-top: 15px;
     }
@@ -990,7 +1149,7 @@ body {
     }
 
     .selection__img>img {
-        width: 100%;
+        width: 70%;
     }
 
     .select__icon {
@@ -1005,10 +1164,12 @@ body {
     .footer__navbar {
         width: 100%;
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
 @media(max-width: 402px) {
+
     .product {
         flex-direction: column;
     }
@@ -1026,6 +1187,23 @@ body {
 
     .advertising2__img {
         display: none;
+    }
+
+    .catalog__cart-top>img {
+        margin-top: 30%;
+        width: 100%;
+    }
+
+    .catalog__card-item {
+        width: 100%;
+    }
+
+    .calatog__icon {
+        display: none;
+    }
+
+    .rur__botom {
+        gap: 0;
     }
 }
 
