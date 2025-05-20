@@ -1,7 +1,7 @@
 function filterCards(category) {
-    const cards = document.querySelectorAll('.catalog__card');
+    const filters = document.querySelectorAll('.catalog__card');
 
-    cards.forEach(card => {
+    filters.forEach(card => {
         if (category === 'all') {
             card.style.display = 'block';
         } else if (card.dataset.category === category) {
