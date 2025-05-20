@@ -974,7 +974,10 @@ body {
     .advertising__item {
         width: 100%;
     }
-
+    .navbar__item {
+        font-size: 19px;
+    }
+    
     .catalog__cards {
         grid-template-columns: 1fr 1fr;
     }
@@ -1073,6 +1076,10 @@ body {
 
     .navbar__arrow {
         display: none;
+    }
+
+    .navbar__item {
+        font-size: 25px;
     }
 
     .face-title-background {
